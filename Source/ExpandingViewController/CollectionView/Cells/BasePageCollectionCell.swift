@@ -105,7 +105,7 @@ extension BasePageCollectionCell {
    - parameter isOpen: Contains the value true if the cell should display open state, if false should display close state.
    - parameter animated: Set to true if the change in selection state is animated.
    */
-  public func cellIsOpen(_ isOpen: Bool, animated: Bool = true) {
+   @objc open func cellIsOpen(_ isOpen: Bool, animated: Bool = true) {
     if isOpen == isOpened { return }
     
     if ySpacing == .greatestFiniteMagnitude {
@@ -152,10 +152,10 @@ extension BasePageCollectionCell {
   
   fileprivate func configurationViews() {
     backContainerView.layer.masksToBounds = true
-    backContainerView.layer.cornerRadius  = 5
+    backContainerView.layer.cornerRadius  = 10
     
     frontContainerView.layer.masksToBounds = true
-    frontContainerView.layer.cornerRadius  = 5
+    frontContainerView.layer.cornerRadius  = 10
     
     contentView.layer.masksToBounds = false
     layer.masksToBounds             = false

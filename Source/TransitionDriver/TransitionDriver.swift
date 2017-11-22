@@ -13,6 +13,7 @@ class TransitionDriver {
   // MARK: Constants
   struct Constants {
     static let HideKey = 101
+    static let ShowKey = 202
   }
   
   // MARK: Vars
@@ -74,12 +75,18 @@ extension TransitionDriver {
       self.view.layoutIfNeeded()
       self.backImageView?.alpha        = 1
       self.copyCell?.shadowView?.alpha = 0
-      copyView.frontContainerView.subviewsForEach { if $0.tag == Constants.HideKey { $0.alpha = 0 } }
+      copyView.frontContainerView.subviewsForEach {
+        if $0.tag == Constants.HideKey { $0.alpha = 0 }
+        else if $0.tag == Constants.ShowKey { $0.alpha = 1; $0.layer.cornerRadius = 10 }
+      }
     }, completion: { success in
       let data = NSKeyedArchiver.archivedData(withRootObject: copyView.frontContainerView)
       guard case let headerView as UIView = NSKeyedUnarchiver.unarchiveObject(with: data) else {
         fatalError("must copy")
       }
+        copyView.frontContainerView.subviewsForEach {
+            if $0.tag == Constants.ShowKey { $0.layer.cornerRadius = 10 }
+        }
       completion(headerView)
     })
   }
@@ -108,7 +115,10 @@ extension TransitionDriver {
       self.backImageView?.alpha  = 0
       copyCell.shadowView?.alpha = 1
       
-      copyCell.frontContainerView.subviewsForEach { if $0.tag == Constants.HideKey { $0.alpha = 1 } }
+      copyCell.frontContainerView.subviewsForEach {
+        if $0.tag == Constants.HideKey { $0.alpha = 1 }
+        else if $0.tag == Constants.ShowKey { $0.alpha = 0 }
+      }
       }, completion: { success in
          self.currentCell?.isHidden = false
          self.removeCurrentCell()

@@ -12,7 +12,7 @@
 [![codebeat badge](https://codebeat.co/badges/6a009992-5bf2-4730-aa35-f3b20ce7693d)](https://codebeat.co/projects/github-com-ramotion-expanding-collection)
 
 # Check this library on other platforms:
-<a href="https://github.com/Ramotion/expanding-collection-android"> 
+<a href="https://github.com/Ramotion/expanding-collection-android">
 <img src="https://github.com/ramotion/navigation-stack/raw/master/Android_Java@2x.png" width="178" height="81"></a>
 
 ## About
@@ -22,7 +22,7 @@ We specialize in the designing and coding of custom UI for Mobile Apps and Websi
 **Looking for developers for your project?**<br>
 This project is maintained by Ramotion, Inc. We specialize in the designing and coding of custom UI for Mobile Apps and Websites.
 
-<a href="https://ramotion.com/?utm_source=gthb&utm_medium=special&utm_campaign=expanding-collection-contact-us/#Get_in_Touch"> 
+<a href="https://ramotion.com/?utm_source=gthb&utm_medium=special&utm_campaign=expanding-collection-contact-us/#Get_in_Touch">
 <img src="https://github.com/ramotion/gliding-collection/raw/master/contact_our_team@2x.png" width="187" height="34"></a> <br>
 
 
@@ -31,7 +31,7 @@ The [iPhone mockup](https://store.ramotion.com?utm_source=gthb&utm_medium=specia
 ## Requirements
 
 - iOS 9.0+
-- Xcode 8
+- Xcode 9.0+
 
 ## Installation
 
@@ -39,10 +39,9 @@ Just add the Source folder to your project.
 
 or use [CocoaPods](https://cocoapods.org) with Podfile:
 ``` ruby
-pod 'expanding-collection', '~> 1.0.3' swift 3
-
-pod 'expanding-collection', '~> 0.3.2' swift 2
+pod 'expanding-collection'
 ```
+
 or [Carthage](https://github.com/Carthage/Carthage) users can simply add to their `Cartfile`:
 ```
 github "Ramotion/expanding-collection"
@@ -82,7 +81,7 @@ import expanding_collection
 
 ``` swift
 override func viewDidLoad() {
-    itemSize = CGSize(width: 214, height: 264)
+    itemSize = CGSize(width: 214, height: 460) //IMPORTANT!!! Height of open state cell
     super.viewDidLoad()
 
     // register cell
@@ -152,10 +151,18 @@ func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 2) Set header height default 236
 
 ``` swift
-override func viewDidLoad() {
-    super.viewDidLoad()
+override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     headerHeight = ***
-}  
+}
+```
+OR
+
+``` swift
+required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    headerHeight = ***
+}
 ```
 
 3) Call the push method in YourViewController to YourTableViewController
@@ -179,9 +186,9 @@ See [LICENSE](./LICENSE) for details.
 # Get the Showroom App for iOS to give it a try
 Try this UI component and more like this in our iOS app. Contact us if interested.
 
-<a href="https://itunes.apple.com/app/apple-store/id1182360240?pt=550053&ct=expanding-collection&mt=8" > 
+<a href="https://itunes.apple.com/app/apple-store/id1182360240?pt=550053&ct=expanding-collection&mt=8" >
 <img src="https://github.com/ramotion/gliding-collection/raw/master/app_store@2x.png" width="117" height="34"></a>
-<a href="https://ramotion.com/?utm_source=gthb&utm_medium=special&utm_campaign=expanding-collection-contact-us/#Get_in_Touch"> 
+<a href="https://ramotion.com/?utm_source=gthb&utm_medium=special&utm_campaign=expanding-collection-contact-us/#Get_in_Touch">
 <img src="https://github.com/ramotion/gliding-collection/raw/master/contact_our_team@2x.png" width="187" height="34"></a>
 <br>
 <br>
